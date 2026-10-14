@@ -1,0 +1,11 @@
+name: Ricostruisci il sito
+on:
+  push:
+    branches: [main]
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow run firebase-hosting-merge.yml -R riasissu/riasissu-website2.0 --ref main
+        env:
+          GH_TOKEN: ${{ secrets.SITE_DEPLOY_TOKEN }}
